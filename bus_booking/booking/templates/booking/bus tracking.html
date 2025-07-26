@@ -1,0 +1,12 @@
+{% load static %}
+{% extends 'booking/base.html' %}
+{% block content %}
+<h2>Track Bus</h2>
+<h2>Tracking Bus ID: {{ bus_id }}</h2>
+
+{% if bus.tracking_link %}
+    <iframe src="{{ bus.tracking_link }}" width="600" height="400"></iframe>
+{% else %}
+    <p>Tracking not available for this bus.</p>
+{% endif %}
+{% endblock %}

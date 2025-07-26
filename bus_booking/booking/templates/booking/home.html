@@ -1,0 +1,41 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% block content %}
+<h2>Buses Available</h2>
+<table>
+    <tr>
+        <th>Bus Name</th>
+        <th>Route</th>
+        <th>Timing</th>
+        <th>Seats</th>
+        <th>Action</th>
+    </tr>
+    {% for bus in buses %}
+    <tr>
+        <td>{{ bus.name }}</td>  <!-- NEW: Display the bus name -->
+        <td>{{ bus.route }}</td>
+        <td>{{ bus.timing }}</td>
+        <td>{{ bus.available_seats }}</td>
+        <td>
+            <a href="{% url 'book_seat' bus.id %}">Book</a>
+            <a href="{% url 'bus_tracking' bus.id %}">Track</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+
+
+{% block scripts %}
+<script>
+function bookBus(busId) {
+    window.location.href = `/book/${busId}/`;
+}
+
+function trackBus(busId) {
+    window.location.href = `/track/${busId}/`;
+}
+</script>
+{% endblock %}
+

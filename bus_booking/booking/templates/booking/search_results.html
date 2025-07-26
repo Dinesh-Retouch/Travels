@@ -1,0 +1,26 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% block content %}
+<h2>Bus Search Results</h2>
+
+<table>
+    <tr>
+        <th>Bus Name</th>
+        <th>Route</th>
+        <th>Timing</th>
+        <th>Available Seats</th>
+        <th>Actions</th>
+    </tr>
+    {% for bus in buses %}
+    <tr>
+        <td>{{ bus.name }}</td>  <!-- NEW: Bus Name -->
+        <td>{{ bus.route }}</td>
+        <td>{{ bus.timing }}</td>
+        <td>{{ bus.available_seats }}</td>
+        <td><a href="{% url 'book_seat' bus.id %}">Book Seat</a></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No buses found.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

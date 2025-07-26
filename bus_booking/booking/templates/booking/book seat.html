@@ -1,0 +1,17 @@
+{% extends 'booking/base.html' %}
+{%load static%}
+{% block content %}
+<h2>Choose Your Seat</h2>
+<h2>Booking for Bus ID: {{ bus_id }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="seat">Seat Number:</label>
+    <select name="seat_number" id="seat">
+        {% for seat in available_seats %}
+            <option value="{{ seat }}">{{ seat }}</option>
+        {% endfor %}
+    </select>
+    <!-- Other booking fields as before -->
+    <button type="submit">Book</button>
+</form>
+{% endblock %}
