@@ -5,7 +5,7 @@ from .models import Bus, Booking
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponse
-from django.db import IntegrityError
+from django.db import IntegrityError 
 
 def home(request):
     buses = Bus.objects.all()
@@ -55,8 +55,6 @@ def book_seat(request, bus_id):
 def bus_tracking(request, bus_id):
     bus = Bus.objects.get(id=bus_id)
     return render(request, 'booking/tracking.html', {'bus': bus})
-
-
 
 def book_bus(request, bus_id):
     # Add logic to handle booking
